@@ -1,0 +1,38 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_fopen
+     7 00000000                                 	EXTERN	_api_sprintf
+     8 00000000                                 	EXTERN	_api_end
+     9 00000000                                 [FILE "sosu.c"]
+    10                                          [SECTION .text]
+    11 00000000                                 	GLOBAL	_HariMain
+    12 00000000                                 _HariMain:
+    13 00000000 55                              	PUSH	EBP
+    14 00000001 89 E5                           	MOV	EBP,ESP
+    15 00000003 53                              	PUSH	EBX
+    16 00000004 83 EC 18                        	SUB	ESP,24
+    17 00000007 8D 5D EC                        	LEA	EBX,DWORD [-20+EBP]
+    18 0000000A 53                              	PUSH	EBX
+    19 0000000B C6 45 E4 52                     	MOV	BYTE [-28+EBP],82
+    20 0000000F C6 45 E5 65                     	MOV	BYTE [-27+EBP],101
+    21 00000013 C6 45 E6 70                     	MOV	BYTE [-26+EBP],112
+    22 00000017 C6 45 E7 6C                     	MOV	BYTE [-25+EBP],108
+    23 0000001B C6 45 E8 61                     	MOV	BYTE [-24+EBP],97
+    24 0000001F C6 45 E9 63                     	MOV	BYTE [-23+EBP],99
+    25 00000023 C6 45 EA 65                     	MOV	BYTE [-22+EBP],101
+    26 00000027 C6 45 EB 64                     	MOV	BYTE [-21+EBP],100
+    27 0000002B C7 45 EC 656B616D               	MOV	DWORD [-20+EBP],1701536109
+    28 00000032 C7 45 F0 7461622E               	MOV	DWORD [-16+EBP],1952539182
+    29 00000039 C6 45 F4 00                     	MOV	BYTE [-12+EBP],0
+    30 0000003D E8 [00000000]                   	CALL	_api_fopen
+    31 00000042 8D 45 E4                        	LEA	EAX,DWORD [-28+EBP]
+    32 00000045 50                              	PUSH	EAX
+    33 00000046 53                              	PUSH	EBX
+    34 00000047 E8 [00000000]                   	CALL	_api_sprintf
+    35 0000004C E8 [00000000]                   	CALL	_api_end
+    36 00000051 8B 5D FC                        	MOV	EBX,DWORD [-4+EBP]
+    37 00000054 C9                              	LEAVE
+    38 00000055 C3                              	RET
