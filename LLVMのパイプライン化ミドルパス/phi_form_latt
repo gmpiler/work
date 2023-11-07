@@ -1,0 +1,30 @@
+
+Form:
+  %10 = phi i64 [ 0, %6 ], [ %19, %9 ]
+  %11 = getelementptr inbounds float, ptr %3, i64 %10
+  %12 = load float, ptr %11, align 4, !tbaa !4
+  %13 = getelementptr inbounds float, ptr %2, i64 %10
+  %14 = load float, ptr %13, align 4, !tbaa !4
+  %15 = fadd float %12, %14
+
+
+Latt:
+  %16 = getelementptr inbounds float, ptr %1, i64 %10
+  %17 = load float, ptr %16, align 4, !tbaa !4
+  %18 = fadd float %15, %17
+  %19 = add nuw i64 %10, 1
+  %20 = getelementptr inbounds float, ptr %1, i64 %19
+  store float %18, ptr %20, align 4, !tbaa !4
+  %21 = icmp ult i64 %19, %0
+  br i1 %21, label %9, label %7, !llvm.loop !8
+
+
+  51:                                               ; preds = %43
+  %52 = getelementptr inbounds float, ptr %1, i64 %24
+  %53 = load float, ptr %52, align 4, !tbaa !4
+  %54 = fadd float %29, %53
+  %55 = add nuw i64 %24, 1
+  %56 = getelementptr inbounds float, ptr %1, i64 %55
+  store float %54, ptr %56, align 4, !tbaa !4
+  %57 = icmp ult i64 %55, %7
+  br i1 %57, label %10, label %8, !llvm.loop !11
